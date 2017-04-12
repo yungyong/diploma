@@ -1,10 +1,8 @@
-function final = algorithm_g_const(a0, b1, N)
-h = 1;
+function final = algorithm_g_const(N, h, w, a0, b1)
 a1 = 0;
-w = 0.5;
 del = h/N;
 
-[X, Y] = matr_Lyap(a0, a1, b1, h, w);
+[X, Y] = lyapunov_matrix(a0, a1, b1, h, w);
 u = table2lambda(X, Y);
 
 L = zeros(1, N);
