@@ -1,4 +1,4 @@
-function final = algorithm_g_const(N, h, w, a0, b1)
+function final = algorithm_g_const(N, h, w, a0, b1, save_filepath)
 a1 = 0;
 del = h/N;
 
@@ -124,9 +124,11 @@ parfor i = 1:N
         fprintf('PSI2 (%d, %d) is ready...\n', i, j);
     end
 end
-psi_2 = psi_2 * (- const);
+psi_2 = psi_2 * (-const);
 
 fprintf('=================\n');
+
+save(save_filepath, 'L', 'M', 'P', 'Q', 'R', 'psi_1', 'psi_2', 'c', 'C')
 
 c_scal = u(0) + 2 * L(N) + P(N, N) + psi_1 + psi_2;
 bound = diag(eye(N));
